@@ -1,0 +1,1 @@
+# prolog_nstu_practice
