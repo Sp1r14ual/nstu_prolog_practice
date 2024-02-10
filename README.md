@@ -1,1 +1,1 @@
-# prolog_nstu_practice
+# nstu_prolog_practice
