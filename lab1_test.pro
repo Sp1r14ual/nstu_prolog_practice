@@ -8,23 +8,34 @@ predicates
 clauses
 	%1st generation
 	male("Alexey").
+	
 	female("Natalya Naryshkina").
 	female("Mariya Miloslavskaya").
 	
-	%2nd generation
-	%left branch
 	mother("Mariya Miloslavskaya", "Sofiya").
 	mother("Mariya Miloslavskaya", "Ivan V").
 	mother("Mariya Miloslavskaya", "Fedor II").
+	mother("Natalya Naryshkina", "Petr I").
+	mother("Ekaterina I", "Anna").
+	mother("Ekaterina I", "Elizaveta").
+	mother("Ekaterina", "Anna Lesopoldovna").
+	mother("Anna", "Petr III").
+	mother("Anna Lesopoldovna", "Ivan VI").
+	
 	father("Alexey", "Sofiya").
 	father("Alexey", "Ivan V").
 	father("Alexey", "Fedor II").
-	
-	%right branch
-	mother("Natalya Naryshkina", "Petr I").
-	mother("Natalya Naryshkina", "Ekaterina I").
 	father("Alexey", "Petr I").
 	father("Alexey", "Ekaterina I").
+	father("Ivan V", "Anna Ioanovna").
+	father("Ivan V", "Ekaterina").
+	father("Petr I", "Anna").
+	father("Petr I", "Elizaveta").
+	father("Herzorg Meklenbursky", "Anna Lesopoldovna").
+	father("Herzog Golsteinsky", "Petr III").
+	father("Prince Anton Brownschweighsky", "Ivan VI").
+	
+
 	
 	
 	
@@ -33,5 +44,5 @@ clauses
 	
 	
 goal
-	%couple(Who, "Mariya Miloslavskaya").
-	sibling(Who, "Sofiya").
+	couple(Who, "Anna").
+	%sibling(Who, "Elizaveta").
