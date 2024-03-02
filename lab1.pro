@@ -68,9 +68,7 @@ clauses
 	female("Ekaterina I").
 	female("Anna").
 	female("Elizaveta").
-	female("Ekaterina II").
-	
-	
+	female("Ekaterina II").	
 	
 	mother("Mariya Miloslavskaya", "Sofiya").
 	mother("Mariya Miloslavskaya", "Ivan V").
@@ -98,18 +96,17 @@ clauses
 	father("Herzog Golsteinsky", "Ekaterina II").
 	
 	
-	couple(Husband, Wife) :- father(Husband, Child), mother(Wife, Child).
+	couple(X, Y) :- father(X, Z), mother(Y, Z).
 	
+	parent(X, Y) :- father(X, Y); mother(X, Y).
 	
-	parent(Parent, Child) :- father(Parent, Child); mother(Parent, Child).
+	child(X, Y) :- parent(Y, X).
+	son(X, Y) :- child(X, Y), male(X).
+	daughter(X, Y) :- child(X, Y), female(X).
 	
-	child(Child, Parent) :- parent(Parent, Child).
-	son(Child, Parent) :- child(Child, Parent), male(Child).
-	daughter(Child, Parent) :- child(Child, Parent), female(Child).
-	
-	brother(Brother, Sister) :- sibling(Brother, Sister), male(Brother), not(Brother = Sister).
-	sister(Sister, Brother) :- sibling(Brother, Sister), female(Sister), not (Brother = Sister).
-	sibling(Brother, Sister) :- father(Father, Brother), father(Father, Sister), mother(Mother, Brother), mother(Mother, Sister), not(Brother = Sister). 
+	brother(X, Y) :- sibling(X, Y), male(X), not(X = Y).
+	sister(X, Y) :- sibling(Y, X), female(X), not (X = Y).
+	sibling(X, Y) :- father(Z, X), father(Z, Y), mother(V, X), mother(V, Y), not(X = Y). 
 	
 	grandparent(X, Y) :- parent(X, Z) , parent(Z, Y).
 	grandfather(X, Y) :- grandparent(X, Y) , male(X).
@@ -150,4 +147,5 @@ goal
 	%sibling(Who, "Elizaveta").
 	%child("Anna", "Petr I").
 	%daughter("Ekaterina II", "Anna").
-	sibling(Who, "Sofiya").
+	%sibling(Who, "Sofiya").
+	greatgranddaughter("Ekaterina II", "Alexey").
