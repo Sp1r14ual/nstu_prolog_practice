@@ -3,12 +3,11 @@ predicates
 	nondeterm female(symbol)
 	
 	nondeterm parent(symbol, symbol)
-	nondeterm father(symbol, symbol) % 1 parameter - father, 2 parameter - child
-	nondeterm mother(symbol, symbol) % 1 parameter - mother, 2 parameter - child 
+	nondeterm father(symbol, symbol)
+	nondeterm mother(symbol, symbol)
 	
 	nondeterm couple(symbol, symbol)
 	nondeterm sibling(symbol, symbol)
-	
 	
 	nondeterm child(symbol, symbol)
 	nondeterm son(symbol, symbol)
@@ -48,7 +47,6 @@ predicates
 	nondeterm samebloodline(symbol, symbol)
 		
 clauses
-	%1st generation
 	male("Alexey").
 	male("Fedor II").
 	male("Ivan V").
@@ -57,18 +55,7 @@ clauses
 	male("Ivan VI").
 	male("Petr I").
 	male("Herzog Golsteinsky").
-	male("Petr III").
-		
-	female("Natalya Naryshkina").
-	female("Mariya Miloslavskaya").
-	female("Sofiya").
-	female("Anna Ioanovna").
-	female("Ekaterina").
-	female("Anna Lesopoldovna").
-	female("Ekaterina I").
-	female("Anna").
-	female("Elizaveta").
-	female("Ekaterina II").	
+	male("Petr III").	
 	
 	mother("Mariya Miloslavskaya", "Sofiya").
 	mother("Mariya Miloslavskaya", "Ivan V").
@@ -95,6 +82,7 @@ clauses
 	father("Prince Anton Brownschweighsky", "Ivan VI").
 	father("Herzog Golsteinsky", "Ekaterina II").
 	
+	female(X) :- not(male(X)).
 	
 	couple(X, Y) :- father(X, Z), mother(Y, Z).
 	
@@ -146,6 +134,6 @@ goal
 	%couple(Who, "Anna").
 	%sibling(Who, "Elizaveta").
 	%child("Anna", "Petr I").
-	%daughter("Ekaterina II", "Anna").
+	daughter("Ekaterina II", "Anna").
 	%sibling(Who, "Sofiya").
-	greatgranddaughter("Ekaterina II", "Alexey").
+	%female("Ekaterina II").
